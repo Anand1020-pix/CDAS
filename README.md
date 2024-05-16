@@ -39,8 +39,8 @@ To utilize CDAS, follow these steps:
   ## Screenshots
  <div style="display: flex; flex-direction: column; align-items: center;">
   <p align="left">React App</p>
-   <p align="right">Python App</p>
-  <div style="display: flex; justify-content: space-between; width: 100%;">
+   <p align="left">Python App</p>
+  <div style="display: flex; justify-content: space-between; width: calc(100% - 10px);">
     <img src="CDAS_APP/screenshot/image.png" width="500"/>
     <img src="CDAS_APP/screenshot/image2.png" width="400" />
   </div>
