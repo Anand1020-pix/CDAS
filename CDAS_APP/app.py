@@ -1,12 +1,14 @@
-import customtkinter as ctk
+import os
+import subprocess
+import datetime
 import cv2
 from ultralytics import YOLO
-import datetime
-import os
-from PIL import Image, ImageTk
 import threading
-from threading import Timer
+import customtkinter as ctk
+from PIL import Image, ImageTk
+import time
 
+# Global variables setup
 video_writer = None
 cap = None
 recording_timer = None
@@ -15,8 +17,11 @@ output_dir = os.path.join(os.getcwd(), 'detection')
 detectable_classes = ["knife", "guns"]
 stop_event = threading.Event()
 
+# Set up the appearance for the application
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
+
+
 
 def video_capture_thread(model, label):
     global cap, video_writer
@@ -37,7 +42,7 @@ def process_frame(img, model, label):
             cls = int(box.cls[0])
             class_name = model.names[cls]
             if class_name in detectable_classes:
-                class_name = "Weapon"  
+                class_name = "Weapon"
                 detected = True
                 if video_writer is None:
                     start_recording()
@@ -55,26 +60,24 @@ def update_gui(img, label):
     img_pil = Image.fromarray(img_rgb)
     img_tk = ImageTk.PhotoImage(image=img_pil)
     label.configure(image=img_tk)
-    label.image = img_tk
+    label.image = img_tk  # Keep a reference
 
 def start_recording():
     global video_writer, recording_timer
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-    fourcc = cv2.VideoWriter_fourcc(*'X264')  # Use H.264 codec
-    current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     output_video_name = os.path.join(output_dir, f'{current_classname}_{current_time}.mp4')
-    video_writer = cv2.VideoWriter(output_video_name, fourcc, 20.0, (640, 480))
-    if recording_timer:
-        recording_timer.cancel()
-    recording_timer = Timer(300, lambda: stop_video(output_video_name))
-    recording_timer.start()
+    video_writer = cv2.VideoWriter(output_video_name, fourcc, 60.0, (640, 480))
+    if video_writer.isOpened():
+        recording_timer = threading.Timer(300, lambda: stop_video(output_video_name))
+        recording_timer.start()
 
 def stop_video(output_video_name=None):
     global video_writer, cap, recording_timer
     if recording_timer:
         recording_timer.cancel()
-        recording_timer = None
     if video_writer:
         video_writer.release()
         video_writer = None
@@ -93,7 +96,7 @@ app.title("CDAS")
 app.geometry("800x600")
 app.resizable(False, False)
 
-model = YOLO(r'F:\CDAS APP\CDAS_APP\best.pt')
+model = YOLO(r'F:\CDAS-APP\CDAS_APP\best.pt')
 display_label = ctk.CTkLabel(app, text="")
 display_label.pack(expand=True, fill='both')
 
@@ -102,5 +105,6 @@ start_btn.pack(side='left', padx=10, pady=10)
 
 stop_btn = ctk.CTkButton(app, text="Stop Capture", command=lambda: stop_video())
 stop_btn.pack(side='right', padx=10, pady=10)
+
 
 app.mainloop()
