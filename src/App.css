@@ -2,29 +2,34 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  
 }
+
 
 .video-files, .video-player {
   padding-right: 2%;
   width: 48%; 
+  max-height: fit-content;
   
 }
 
 .video-player video {
   width: 100%;
+  background-color: #e9e9e9;
   
 }
 
 .video-files {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  box-shadow: 0px 2px 4px rgba(77, 76, 76, 0.1);
+  box-shadow: 0px 2px 6px rgba(77, 76, 76, 0.1);
   padding-left: 2%;
 }
 
 .video-files h2 {
-  font-size: 1.5em;
+  
   margin-bottom: 10px;
+  color: rgb(41, 41, 108);
 }
 
 .video-files ul {
