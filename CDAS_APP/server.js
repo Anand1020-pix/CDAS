@@ -4,11 +4,11 @@ const fs = require('fs');
 const Twilio = require('twilio');
 
 const app = express();
-const accountSid = 'AC171ebcc41190db25abe5fb21a6104fe2';
-const authToken = '5d13c046a6d42545db06da86593906e7';
+const accountSid = '';
+const authToken = '';
 const client = new Twilio(accountSid, authToken);
-const twilioPhoneNumber = '+13342768013';
-const destinationPhoneNumber = '+916282266338';
+const twilioPhoneNumber = '';
+const destinationPhoneNumber = '';
 
 let videoCount = 0;
 let sendSmsTimeout = null;
