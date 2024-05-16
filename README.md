@@ -37,7 +37,8 @@ To utilize CDAS, follow these steps:
 - threading (for multi-threading in Python)
 
   ## Screenshots
-  <img align="left"  src="CDAS_APP/screenshot/image.png" width="400" />
+  
+  <img align="left"  src="CDAS_APP/screenshot/image.png" width="800" />
   <img align="right" src="CDAS_APP/screenshot/image2.png" width="400" />
   
   
