@@ -38,4 +38,5 @@ To utilize CDAS, follow these steps:
 
   ## Screenshots
   ![Alt text](CDAS_APP/screenshot/image2.png)
+  <img src="CDAS_APP/screenshot/image2.png" width="300" />
   
