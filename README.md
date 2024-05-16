@@ -37,7 +37,7 @@ To utilize CDAS, follow these steps:
 - threading (for multi-threading in Python)
 
   ## Screenshots
- <div style="display: flex; flex-direction: column; align-items: center;">
+ <div style="display: flex; flex-direction: row; align-items: center;">
   <p align="left">React App</p>
   <img src="CDAS_APP/screenshot/image.png" width="500"/>
   <p align="left">Python App</p>
