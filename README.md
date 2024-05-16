@@ -30,11 +30,12 @@ To utilize CDAS, follow these steps:
 - Node.js (for server-side scripting)
 - Express.js (for building the Node.js server)
 - fs (for file system operations in Node.js)
-
-  ## Screenshots
-  
 - Python (for the detection app)
 - OpenCV (for image and video processing)
 - Ultralytics YOLO (for object detection)
 - PIL (Python Imaging Library, for image processing)
 - threading (for multi-threading in Python)
+
+  ## Screenshots
+<img src= " CDAS_APP/screenshot/image2.png"/>
+  
